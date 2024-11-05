@@ -83,7 +83,7 @@ public class PasswordValidator implements PasswordValidatorInterface {
         PasswordValidator passwordValidator = new PasswordValidator();
         ValidationResult result;
         System.out.println(
-                "Welcome to the password validator. These are the password rules:\n * 1 uppercase letter\n * 5 lowercase lettters\n * 1 digit\n * your favourite pet");
+                "Welcome to the password validator. These are the password rules:\n * 1 uppercase letter\n * 5 lowercase letters\n * 1 digit\n * your favourite pet");
 
         do {
             System.out.println("Please enter a password: ");
