@@ -2,18 +2,19 @@ package com.chrisceltin.password_validator;
 
 import java.util.Scanner;
 
-public class PasswordValidator {
+public class PasswordValidator implements PasswordValidatorInterface {
     static final int NUM_UPPER_LETTERS = 1;
     static final int NUM_LOWER_LETTERS = 5;
     static final int NUM_DIGITS = 1;
     static final String[] PETS = { "dog", "cat", "hamster", "rabbit", "turtle", "snake", "mouse", "fish", "shrimp",
             "bird" };
 
-    public static boolean validatePassword(String input) {
+    @Override
+    public ValidationResult validatePassword(String input) {
         /** check for whitespace, and prompt for password again, if necessary **/
         if (input.matches(".*\\s.*")) {
-            System.out.println("Password may not contain whitespace.");
-            return false;
+
+            return new ValidationResult(false, "Password may not contain whitespace.");
         }
 
         /** check for pet **/
@@ -28,8 +29,7 @@ public class PasswordValidator {
         }
 
         if (!containsPet) {
-            System.out.println("Password must contain your favourite pet.");
-            return false;
+            return new ValidationResult(false, "Password must contain your favourite pet.");
         }
 
         int upperCount = 0;
@@ -49,49 +49,51 @@ public class PasswordValidator {
             } else if (Character.isDigit(ch)) {
                 digitCount++;
             } else {
-                System.out.println("Please type in a valid sequence of upper or lower case letters or digits.");
-                return false;
+                return new ValidationResult(false,
+                        "Please type in a valid sequence of upper or lower case letters or digits.");
+
             }
         }
 
         if (upperCount < NUM_UPPER_LETTERS) {
-            System.out.println("Password must contain at least one uppercase letter.");
-            return false;
+            return new ValidationResult(false, "Password must contain at least one uppercase letter.");
         }
         if (lowerCount < NUM_LOWER_LETTERS) {
-            System.out.println("Password must contain at least 5 lowercase letters.");
-            return false;
+            return new ValidationResult(false, "Password must contain at least 5 lowercase letters.");
         }
         if (digitCount < NUM_DIGITS) {
-            System.out.println("Password must contain at least one digit.");
-            return false;
+            return new ValidationResult(false, "Password must contain at least one digit.");
         }
 
-        return true;
+        String validPassword = """
+         _  _   __   __    __  ____    ____   __   ____  ____  _  _   __  ____  ____ 
+        / )( \\ / _\\ (  )  (  )(    \\  (  _ \\ / _\\ / ___)/ ___)/ )( \\ /  \\(  _ \\(    \\
+        \\ \\/ //    \\/ (_/\\ )(  ) D (   ) __//    \\\\___ \\\\___ \\\\ \\/ /(  O ))   / ) D (
+         \\__/ \\_/\\_/\\____/(__)(____/  (__)  \\_/\\_/(____/(____/\\_/\\_) \\__/(__\\_)(____/
+        """;
+
+        return new ValidationResult(true, validPassword); // If all checks pass, return true
+
+
 
     }
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
+        PasswordValidator passwordValidator = new PasswordValidator();
+        ValidationResult result;
         System.out.println(
                 "Welcome to the password validator. These are the password rules:\n * 1 uppercase letter\n * 5 lowercase lettters\n * 1 digit\n * your favourite pet");
-        System.out.println("Please enter a password: ");
-        String input = scanner.nextLine();
 
-        if (validatePassword(input)) {
-            System.out.println(" _  _   __   __    __  ____    ____   __   ____  ____  _  _   __  ____  ____ ");
-            System.out
-                    .println("/ )( \\ / _\\ (  )  (  )(    \\  (  _ \\ / _\\ / ___)/ ___)/ )( \\ /  \\(  _ \\(    \\");
-            System.out.println(
-                    "\\ \\/ //    \\/ (_/\\ )(  ) D (   ) __//    \\\\___ \\\\___ \\\\ /\\ /(  O ))   / ) D (");
-            System.out
-                    .println(" \\__/ \\_/\\_/\\____/(__)(____/  (__)  \\_/\\_/(____/(____/(_/\\_) \\__/(__\\_)(____/");
+        do {
+            System.out.println("Please enter a password: ");
 
-        } else {
-            System.out.println("Password is invalid");
-        }
+            String input = scanner.nextLine();
+            result = passwordValidator.validatePassword(input);
+            System.out.println(result.message());
+        } while (!result.isValid());
         scanner.close();
     }
-
 }
+
+
