@@ -42,7 +42,7 @@ public class PasswordValidator implements PasswordValidatorInterface {
      * @return A ValidationResult object indicating whether the password is valid and providing a corresponding message.
      */
     @Override
-    public ValidationResult validatePassword(String input) {
+    public ValidationResult validate(String input) {
         // check for whitespace, and prompt for password again, if necessary 
         if (input.matches(".*\\s.*")) {
 
@@ -132,7 +132,7 @@ public class PasswordValidator implements PasswordValidatorInterface {
             System.out.println("Please enter a password: ");
 
             String input = scanner.nextLine();  // read the user's password input
-            result = passwordValidator.validatePassword(input); // validate the input password and store the result
+            result = passwordValidator.validate(input); // validate the input password and store the result
             System.out.println(result.message());   // print the result message 
         } while (!result.isValid());
 
