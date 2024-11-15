@@ -3,10 +3,13 @@ package com.chrisceltin.password_validator;
 import java.util.Scanner;
 
 /**
- * The {@code PasswordValidator} class validates passwords based on specific rules defined in the {@link PasswordValidatorInterface}.
- * The password must meet conditions such as containing a certain number of uppercase and lowercase letters, digits and one of the specified pet names.
+ * The {@code PasswordValidator} class validates passwords based on specific
+ * rules defined in the {@link PasswordValidatorInterface}.
+ * The password must meet conditions such as containing a certain number of
+ * uppercase and lowercase letters, digits and one of the specified pet names.
  * <p>
- * The validation process returns a {@link ValidationResult} object containing the result of the validation and an appropriate message.
+ * The validation process returns a {@link ValidationResult} object containing
+ * the result of the validation and an appropriate message.
  * </p>
  * <p>
  * This class implements the {@link PasswordValidatorInterface}.
@@ -22,28 +25,30 @@ public class PasswordValidator implements PasswordValidatorInterface {
 
     static final int NUM_LOWER_LETTERS = 5; // minumim number of lowercase letters required in the password
 
-    static final int NUM_DIGITS = 1;    // minumum number of digits required in the password
+    static final int NUM_DIGITS = 1; // minumum number of digits required in the password
 
     static final String[] PETS = { "dog", "cat", "hamster", "rabbit", "turtle", "snake", "mouse", "fish", "shrimp",
-            "bird" };                           // array of pet names that must be included in the password
+            "bird" }; // array of pet names that must be included in the password
 
     /**
      * Validates a given password according to specific rules. The rules include:
      * <ul>
-     *      <li>The password must not contain any whitespace.</li>
-     *      <li>The password must contain at least one of the specified pet names.</li>
-     *      <li>The password must have at least one uppercase letter.</li>
-     *      <li>The password must have at least 5 lowercase letters.</li>
-     *      <li>The password must have at least one digit.</li>
-     *      <li>The password must only contain valid upper or lower case letters and digits.</li>
+     * <li>The password must not contain any whitespace.</li>
+     * <li>The password must contain at least one of the specified pet names.</li>
+     * <li>The password must have at least one uppercase letter.</li>
+     * <li>The password must have at least 5 lowercase letters.</li>
+     * <li>The password must have at least one digit.</li>
+     * <li>The password must only contain valid upper or lower case letters and
+     * digits.</li>
      * </ul>
      * 
      * @param input Inputs the password string to be validated.
-     * @return A ValidationResult object indicating whether the password is valid and providing a corresponding message.
+     * @return A ValidationResult object indicating whether the password is valid
+     *         and providing a corresponding message.
      */
     @Override
     public ValidationResult validate(String input) {
-        // check for whitespace, and prompt for password again, if necessary 
+        // check for whitespace, and prompt for password again, if necessary
         if (input.matches(".*\\s.*")) {
 
             return new ValidationResult(false, "Password may not contain whitespace.");
@@ -98,30 +103,30 @@ public class PasswordValidator implements PasswordValidatorInterface {
         }
 
         String validPassword = """
-         _  _   __   __    __  ____    ____   __   ____  ____  _  _   __  ____  ____ 
-        / )( \\ / _\\ (  )  (  )(    \\  (  _ \\ / _\\ / ___)/ ___)/ )( \\ /  \\(  _ \\(    \\
-        \\ \\/ //    \\/ (_/\\ )(  ) D (   ) __//    \\\\___ \\\\___ \\\\ \\/ /(  O ))   / ) D (
-         \\__/ \\_/\\_/\\____/(__)(____/  (__)  \\_/\\_/(____/(____/\\_/\\_) \\__/(__\\_)(____/
-        """;
+                 _  _   __   __    __  ____    ____   __   ____  ____  _  _   __  ____  ____
+                / )( \\ / _\\ (  )  (  )(    \\  (  _ \\ / _\\ / ___)/ ___)/ )( \\ /  \\(  _ \\(    \\
+                \\ \\/ //    \\/ (_/\\ )(  ) D (   ) __//    \\\\___ \\\\___ \\\\ \\/ /(  O ))   / ) D (
+                 \\__/ \\_/\\_/\\____/(__)(____/  (__)  \\_/\\_/(____/(____/\\_/\\_) \\__/(__\\_)(____/
+                """;
 
         return new ValidationResult(true, validPassword); // If all checks pass, return true
-
-
 
     }
 
     /**
-     * The main method runs the password validator in an interactive mode, prompting the user to enter a password and displaying the validation results.
+     * The main method runs the password validator in an interactive mode, prompting
+     * the user to enter a password and displaying the validation results.
      * 
-     * @param args Takes ommand-line arguments.
+     * @param args Takes command-line arguments.
      */
 
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);   // create a Scanner object for reading user input
+        Scanner scanner = new Scanner(System.in); // create a Scanner object for reading user input
 
-        PasswordValidator passwordValidator = new PasswordValidator();  // create an instance of the PasswordValidator class
-        ValidationResult result;    // variable to store the result of password validation
+        PasswordValidator passwordValidator = new PasswordValidator(); // create an instance of the PasswordValidator
+                                                                       // class
+        ValidationResult result; // variable to store the result of password validation
 
         // print welcome message and password rules
         System.out.println(
@@ -131,13 +136,11 @@ public class PasswordValidator implements PasswordValidatorInterface {
         do {
             System.out.println("Please enter a password: ");
 
-            String input = scanner.nextLine();  // read the user's password input
+            String input = scanner.nextLine(); // read the user's password input
             result = passwordValidator.validate(input); // validate the input password and store the result
-            System.out.println(result.message());   // print the result message 
+            System.out.println(result.message()); // print the result message
         } while (!result.isValid());
 
-        scanner.close();    // close the scanner object to free up resources
+        scanner.close(); // close the scanner object to free up resources
     }
 }
-
-

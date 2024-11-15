@@ -64,6 +64,20 @@
                 </configuration>
             </plugin>
 
+            <!-- Javadoc Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.11.1</version>
+                <configuration>
+                    <reportOutputDirectory>${project.build.directory}/javadoc</reportOutputDirectory>
+                    <doctitle>${project.name} API</doctitle>
+                    <windowtitle>${project.name} API</windowtitle>
+                    <author>true</author>
+                    <version>true</version>
+                </configuration>
+             </plugin>
+
             <!-- Surefire plugin for running JUnit 5 tests -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
