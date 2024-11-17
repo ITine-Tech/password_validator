@@ -56,5 +56,6 @@ Your password must include at least:
 *	One number
 *	Your favorite animal
 *	not contain any whitespace
+  
 If you do everything right, our project says password valid.
 
