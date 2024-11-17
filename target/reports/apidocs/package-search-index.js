@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.chrisceltin.password_validator"},{"l":"com.cthiebaud"}];updateSearchResults();
