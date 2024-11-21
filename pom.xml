@@ -6,6 +6,29 @@
     <groupId>chrisceltin</groupId>
     <artifactId>password_validator</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <developers>
+        <developer>
+            <id>ITine_Tech</id>
+            <name>Christine Gundel</name>
+            <email>gundelc@gmail.com</email>
+        </developer>
+        <developer>
+            <id>Tina241104</id>
+            <name>Tina Ranft</name>
+            <email>tina-ranft@web.de</email>
+        </developer>
+          <developer>
+            <id>celine250108</id>
+            <name>Celine Hager</name>
+            <email>hceline2501@gmail.com</email>
+        </developer>
+    </developers>
+
+    <scm>
+        <url>https://github.com/ITine-Tech/password_validator</url>
+    </scm>
 
     <properties>
         <!-- Use Java 23 -->
