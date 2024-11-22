@@ -1,10 +1,11 @@
 package com.chrisceltin.password_validator;
 
 import java.util.Scanner;
+import com.cthiebaud.passwordvalidator.*;
 
 /**
- * The {@code PasswordValidator} class validates passwords based on specific
- * rules defined in the {@link PasswordValidatorInterface}.
+ * The {@code MyPasswordValidator} class validates passwords based on specific
+ * rules defined in the {@link PasswordValidator}.
  * The password must meet conditions such as containing a certain number of
  * uppercase and lowercase letters, digits and one of the specified pet names.
  * <p>
@@ -12,14 +13,14 @@ import java.util.Scanner;
  * the result of the validation and an appropriate message.
  * </p>
  * <p>
- * This class implements the {@link PasswordValidatorInterface}.
+ * This class implements the {@link PasswordValidator}.
  * 
  * @author Christine Gundel, Celine Hager, Tina Ranft.
  * 
  * @version 1.0.
  */
 
-public class PasswordValidator implements PasswordValidatorInterface {
+public class MyPasswordValidator implements PasswordValidator {
 
     static final int NUM_UPPER_LETTERS = 1; // minumum number of uppercase letters required in the password
 
@@ -124,8 +125,9 @@ public class PasswordValidator implements PasswordValidatorInterface {
 
         Scanner scanner = new Scanner(System.in); // create a Scanner object for reading user input
 
-        PasswordValidator passwordValidator = new PasswordValidator(); // create an instance of the PasswordValidator
-                                                                       // class
+        MyPasswordValidator passwordValidator = new MyPasswordValidator(); // create an instance of the
+                                                                           // PasswordValidator
+                                                                           // class
         ValidationResult result; // variable to store the result of password validation
 
         // print welcome message and password rules

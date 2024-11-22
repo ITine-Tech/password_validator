@@ -1,4 +1,5 @@
 package com.chrisceltin.password_validator;
+import com.cthiebaud.passwordvalidator.*;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -6,11 +7,11 @@ import org.junit.jupiter.api.BeforeEach;
 
 public class PasswordValidatorTest {
 
-    private PasswordValidator validator;
+    private MyPasswordValidator validator;
 
     @BeforeEach
     public void setUp() {
-        validator = new PasswordValidator();
+        validator = new MyPasswordValidator();
     }
 
     @Test

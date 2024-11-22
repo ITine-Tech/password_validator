@@ -26,8 +26,11 @@
         </developer>
     </developers>
 
-    <scm>
-        <url>https://github.com/ITine-Tech/password_validator</url>
+   <scm>
+        <url>https://github.com/athenaeum-brew/password-validator-impl</url>
+        <connection>scm:git:https://github.com/athenaeum-brew/password-validator-impl.git</connection>
+        <developerConnection>scm:git:git@github.com:athenaeum-brew/password-validator-impl.git</developerConnection>
+        <tag>HEAD</tag>
     </scm>
 
     <properties>
@@ -36,10 +39,17 @@
         <maven.compiler.target>23</maven.compiler.target>
         <maven.compiler.release>23</maven.compiler.release>
     </properties>
-
-    <repositories>
+    
+    <distributionManagement>
     <repository>
         <id>athenaeum-brew-maven-repo</id>
+        <url>https://maven.pkg.github.com/athenaeum-brew/maven-repo</url>
+    </repository>
+    </distributionManagement>
+
+    <repositories>
+      <repository>
+        <id>itine-tech-repo</id>
         <url>https://maven.pkg.github.com/athenaeum-brew/maven-repo</url>
         <releases>
             <enabled>true</enabled>
@@ -48,16 +58,21 @@
             <enabled>true</enabled>
         </snapshots>
     </repository>
+      <!-- <repository>
+            <id>itine-tech-repo</id>
+            <url>https://maven.pkg.github.com/ITine-Tech/password_validator</url>
+        </repository> -->
     </repositories>
 
-    <distributionManagement>
-    <repository>
-        <id>athenaeum-brew-maven-repo</id>
-        <url>https://maven.pkg.github.com/athenaeum-brew/maven-repo</url>
-    </repository>
-    </distributionManagement>
 
     <dependencies>
+    <!-- Password Validator by C Thiebaud-->
+    <dependency>
+        <groupId>com.cthiebaud</groupId>
+        <artifactId>password-validator</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </dependency>
+
         <!-- JUnit 5 for testing -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -112,6 +127,20 @@
                     </includes>
                 </configuration>
             </plugin>
+
+<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.chrisceltin.password_validator.MyPasswordValidator</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 </project>
