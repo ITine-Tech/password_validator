@@ -49,7 +49,7 @@
 
     <repositories>
       <repository>
-        <id>itine-tech-repo</id>
+        <id>my_github_maven_repo</id>
         <url>https://maven.pkg.github.com/athenaeum-brew/maven-repo</url>
         <releases>
             <enabled>true</enabled>
