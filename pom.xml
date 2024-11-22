@@ -42,7 +42,7 @@
     
     <distributionManagement>
     <repository>
-        <id>athenaeum-brew-maven-repo</id>
+        <id>my_github_maven_repo</id>
         <url>https://maven.pkg.github.com/athenaeum-brew/maven-repo</url>
     </repository>
     </distributionManagement>
@@ -58,10 +58,6 @@
             <enabled>true</enabled>
         </snapshots>
     </repository>
-      <!-- <repository>
-            <id>itine-tech-repo</id>
-            <url>https://maven.pkg.github.com/ITine-Tech/password_validator</url>
-        </repository> -->
     </repositories>
 
 
