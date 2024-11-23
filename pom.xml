@@ -27,10 +27,7 @@
     </developers>
 
    <scm>
-        <url>https://github.com/athenaeum-brew/password-validator-impl</url>
-        <connection>scm:git:https://github.com/athenaeum-brew/password-validator-impl.git</connection>
-        <developerConnection>scm:git:git@github.com:athenaeum-brew/password-validator-impl.git</developerConnection>
-        <tag>HEAD</tag>
+        <url>https://github.com/ITine-Tech/password_validator</url>
     </scm>
 
     <properties>
