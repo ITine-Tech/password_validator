@@ -19,7 +19,8 @@ Our project is a password validator. It was created and documented by Christine 
 
 ---
 
-_MyPasswordValidator_
+**MyPasswordValidator**
+
 MyPasswordValidator implements the PasswordValidator Interface and the ValidationResult Record provided by C Thiebaud in a JAR.
 The password validation logic enforces the following rules to ensure secure and creative passwords:
 
@@ -62,23 +63,25 @@ To install and run the project, follow these steps:
 
     ````sh
     mvn clean install
+    ```
 
 3. **Build the project:**
 Compile and package the project using Maven:
 
     ````sh
     mvn package
+    ```
 
-4. **Run the application**:
+4. **Run the application:**
 After packaging, you can run the application using the following command: 
 
-````sh
-java -jar password-validator-1.0.0-20241121.173543-6.jar target/password_validator-1.0-SNAPSHOT.jar
+   ````sh
+   java -jar password-validator-1.0.0-20241121.173543-6.jar target/password_validator-1.0-SNAPSHOT.jar
+   ```
 
 5. **Run the tests:**
 To run the unit tests, use the following command:
 
-```sh
-mvn test
-
-````
+   ```sh
+   mvn test
+   ````
