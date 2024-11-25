@@ -88,7 +88,7 @@ public class MyPasswordValidator implements PasswordValidator {
                 digitCount++;
             } else {
                 return new ValidationResult(false,
-                        "Please type in a valid sequence of upper or lower case letters or digits.");
+                        "Please use in your password:\n * your favourite pet\n * at least 1 uppercase letter\n * at least 5 lower case letters \n * at least 1 digit");
 
             }
         }

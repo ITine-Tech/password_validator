@@ -1,56 +1,84 @@
 # password_validator
 
 ## Table of Contents
-***
-1.	[General Info] (#general-info)
-2.	[Technologies] (#technologies)
-3.	[Installation] (#installation)
-4.	[Collaboration] (#collaboration)
 
+---
+
+1. [General Info] (#general-info)
+2. [Components] (#components)
+3. [Technologies] (#technologies)
+4. [Installation] (#installation)
 
 ## General Info
-***
-Our projekt is a password validator. It was create and documented by Christine Gundel, Celine Hager and Tina Ranft. Our task was: 
-1.	A JAR file containing your implementation.
-*	Jar file should be pushed to maven repo as described in the exercice, but is it not a strict requirement.
-2.	A link to GitHub repo (or a Zip file) with source code, unit tests, and a README with a description of your criterion.
-*	At least source code must contain javadoc comments.
-*	README format can be any of [plain text, markdown, pdf, latex]. Please do not use exotic formats such as Microsoft Word.
-*	NB. Note that zip file, javadoc file, ar any file can also be pushed to maven repo.
-*	Requirements:
-* Implement the PasswordValidator interface.
-*	Ensure your JAR file can be executed by the testing program.
-*	Include detailed unit tests that verify your password validation logic.
-*	Write a README explaining your criterion, and how it ensures security (or creativity).
-*	Document your code with Javadoc.
+
+---
+
+Our project is a password validator. It was created and documented by Christine Gundel, Celine Hager and Tina Ranft. It is a project of the course "Programming 1" of the Baden-Wuerttemberg Cooperative State University Heilbronn, November 2024.
+
+## Components
+
+---
+
+_MyPasswordValidator_
+MyPasswordValidator implements the PasswordValidator Interface and the ValidationResult Record provided by C Thiebaud in a JAR.
+The password validation logic enforces the following rules to ensure secure and creative passwords:
+
+- No whitespace
+- At least one uppercase letter: Promotes case sensitivity.
+- At least five lowercase letters: Increases complexity.
+- At least one numeric character: Ensures a mix of character types.
+- Include your favorite animal: Adds a creative, user-specific element to the password.
+
+If all criteria are met, the program will confirm with a "Password valid" message.
 
 ## Technologies
-***
+
+---
+
 A list of technologies used within the project:
-*	[java] : Version 23
-*	[maven] : Version 3.13.0
-*	[Junit] : Version 5.11.2
+
+- [java] : Version 23
+- [maven] : Version 3.13.0
+- [Junit] : Version 5.11.2
+
 
 ## Installation
-***
-* Compile and run the program in the program directory:
-Use javac *.java to compile, and java *.java to run
 
-* Make a JAR (Java Archive) using Maven:
-Run: mvn clean package in the root directory 
---> Jar is being created in the target directory
+---
 
+To install and run the project, follow these steps:
 
+1. **Clone the repository**:
+   First, clone the repository to your local machine using the following command:
 
-## Collaboration
-***
-You have to choose your password. 
-Your password must include at least:
-* One upper letter
-*	Five lower letter
-*	One number
-*	Your favorite animal
-*	not contain any whitespace
-  
-If you do everything right, our project says password valid.
+   ```sh
+   git clone https://github.com/athenaeum-brew/password-validator-impl.git
+   cd password-validator-impl
 
+   ```
+
+2. **Install dependencies:**
+   Ensure you have Maven installed. If not, you can download and install it from Maven's official website (https://maven.apache.org/download.cgi). Once Maven is installed, run the following command to install the project dependencies:
+
+    ````sh
+    mvn clean install
+
+3. **Build the project:**
+Compile and package the project using Maven:
+
+    ````sh
+    mvn package
+
+4. **Run the application**:
+After packaging, you can run the application using the following command: 
+
+````sh
+java -jar password-validator-1.0.0-20241121.173543-6.jar target/password_validator-1.0-SNAPSHOT.jar
+
+5. **Run the tests:**
+To run the unit tests, use the following command:
+
+```sh
+mvn test
+
+````
