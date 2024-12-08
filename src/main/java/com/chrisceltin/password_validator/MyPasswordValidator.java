@@ -22,25 +22,24 @@ import com.cthiebaud.passwordvalidator.*;
 
 public class MyPasswordValidator implements PasswordValidator {
 
-    static final int NUM_UPPER_LETTERS = 1; // minumum number of uppercase letters required in the password
+    final int NUM_UPPER_LETTERS = 1; // minumum number of uppercase letters required in the password
 
-    static final int NUM_LOWER_LETTERS = 5; // minumim number of lowercase letters required in the password
+    final int NUM_LOWER_LETTERS = 5; // minumim number of lowercase letters required in the password
 
-    static final int NUM_DIGITS = 1; // minumum number of digits required in the password
+    final int NUM_DIGITS = 1; // minumum number of digits required in the password
 
-    static final String[] PETS = { "dog", "cat", "hamster", "rabbit", "turtle", "snake", "mouse", "fish", "shrimp",
+    final String[] PETS = { "dog", "cat", "hamster", "rabbit", "turtle", "snake", "mouse", "fish", "shrimp",
             "bird" }; // array of pet names that must be included in the password
 
     /**
      * Validates a given password according to specific rules. The rules include:
      * <ul>
      * <li>The password must not contain any whitespace.</li>
-     * <li>The password must contain at least one of the specified pet names.</li>
+     * <li>The password must not contain any special characters.</li>
+     * <li>The password must contain at least one of the specified pet names: dog, cat, hamster, rabbit, turtle, snake, mouse, fish, shrimp, bird.</li>
      * <li>The password must have at least one uppercase letter.</li>
      * <li>The password must have at least 5 lowercase letters.</li>
      * <li>The password must have at least one digit.</li>
-     * <li>The password must only contain valid upper or lower case letters and
-     * digits.</li>
      * </ul>
      * 
      * @param input Inputs the password string to be validated.
@@ -49,10 +48,21 @@ public class MyPasswordValidator implements PasswordValidator {
      */
     @Override
     public ValidationResult validate(String input) {
+
+        // check for null or empty password
+        if (input == null || input.isEmpty()) {
+            return new ValidationResult(false, "Password cannot be empty.");
+        }
+
         // check for whitespace, and prompt for password again, if necessary
         if (input.matches(".*\\s.*")) {
 
             return new ValidationResult(false, "Password may not contain whitespace.");
+        }
+
+        // check for special characters
+        if (!input.matches("[a-zA-Z0-9]+")) {
+            return new ValidationResult(false, "Please use only letters and digits in your password, no special characters.");
         }
 
         // check for pet
@@ -67,7 +77,7 @@ public class MyPasswordValidator implements PasswordValidator {
         }
 
         if (!containsPet) {
-            return new ValidationResult(false, "Password must contain your favourite pet.");
+            return new ValidationResult(false, "Password must contain your favourite pet: " + String.join(", ", PETS));
         }
 
         int upperCount = 0;
@@ -88,7 +98,7 @@ public class MyPasswordValidator implements PasswordValidator {
                 digitCount++;
             } else {
                 return new ValidationResult(false,
-                        "Please use in your password:\n * your favourite pet\n * at least 1 uppercase letter\n * at least 5 lower case letters \n * at least 1 digit");
+                        "Please use in your password:\n * your favourite pet\n * at least 1 uppercase letter\n * at least 5 lower case letters \n * at least 1 digit \n * no special characters or white spaces");
 
             }
         }
