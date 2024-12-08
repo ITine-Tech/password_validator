@@ -21,16 +21,17 @@ Our project is a password validator. It was created and documented by Christine 
 
 **MyPasswordValidator**
 
-MyPasswordValidator implements the PasswordValidator Interface and the ValidationResult Record provided by C Thiebaud in a JAR.
-The password validation logic enforces the following rules to ensure secure and creative passwords:
+MyPasswordValidator implements the PasswordValidator Interface and the ValidationResult Record provided by C Thiebaud in a JAR. The password validation logic enforces the following rules to ensure secure and creative passwords:
 
-- No whitespace
-- At least one uppercase letter: Promotes case sensitivity.
-- At least five lowercase letters: Increases complexity.
-- At least one numeric character: Ensures a mix of character types.
-- Include your favorite animal: Adds a creative, user-specific element to the password.
+* The password must not contain any whitespace.
+* The password must not contain any special characters.
+* The password must contain at least one of the specified pet names: dog, cat, hamster, rabbit, turtle, snake, mouse, fish, shrimp, bird
+* The password must have at least one uppercase letter.
+* The password must have at least 5 lowercase letters.
+* The password must have at least one digit.
 
-If all criteria are met, the program will confirm with a "Password valid" message.
+
+If all criteria are met, the program will confirm with a "Password valid" message, otherwise it will prompt the user again.
 
 ## Technologies
 
